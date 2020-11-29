@@ -20,7 +20,7 @@ class CreatePaymentsTable extends Migration
             $table->double('amount');
             $table->date('date')->nullable();
             $table->text('note')->nullable();
-
+            $table->tinyInteger('valid')->default(1);
             $table->timestamps();
         });
     }

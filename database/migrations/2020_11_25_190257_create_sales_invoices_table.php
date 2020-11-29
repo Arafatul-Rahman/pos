@@ -19,6 +19,7 @@ class CreateSalesInvoicesTable extends Migration
             $table->foreignId('user_id');
             $table->string('chalan_no')->nullable();
             $table->date('date')->nullable();
+            $table->tinyInteger('valid')->default(1);
             $table->timestamps();
         });
     }

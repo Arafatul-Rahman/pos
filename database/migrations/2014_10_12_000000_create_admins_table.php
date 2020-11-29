@@ -21,9 +21,14 @@ class CreateAdminsTable extends Migration
             $table->string('password');
             $table->string('phone')->nullable();
             $table->string('address')->nullable();
+            $table->tinyInteger('valid')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });
+
+          DB::table('admins')->insert(
+            array('id'=> 0, 'name'=> 'Administrator','email'=> 'admin@gmail.com', 'email_verified_at'=> NULL, 'password'=> '$2y$10$IWGhwRHClTWxTGk91.UXceS8jPB/P2WV3yDEsqo0qz3/GWQgznMjC','address'=>'', 'phone'=>'','created_at'=> '2019-10-27 22:19:28', 'updated_at'=> NULL, 'valid' => 1)
+        );
     }
 
     /**

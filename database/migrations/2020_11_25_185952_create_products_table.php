@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->text('description',100)->nullable();
             $table->double('cost_price',100);
             $table->double('price',100);
+            $table->tinyInteger('valid')->default(1);
             $table->timestamps();
         });
     }

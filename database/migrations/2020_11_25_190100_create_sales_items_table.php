@@ -20,6 +20,7 @@ class CreateSalesItemsTable extends Migration
             $table->double('quantity');
             $table->double('price');
             $table->double('total');
+            $table->tinyInteger('valid')->default(1);
             $table->timestamps();
         });
     }
