@@ -7,6 +7,7 @@
 	<title>pos</title>
 
 	<!-- Global stylesheets -->
+	
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
 	<link href="{{asset('/backEnd/admin')}}/assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
 	<link href="{{asset('/backEnd/admin')}}/assets/css/minified/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -16,13 +17,16 @@
 	<!-- /global stylesheets -->
 
 	<!-- Core JS files -->
-	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/plugins/loaders/pace.min.js"></script>
+
+
 	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/core/libraries/jquery.min.js"></script>
-	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/core/libraries/bootstrap.min.js"></script>
+	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/plugins/loaders/pace.min.js"></script>
+		<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/core/libraries/bootstrap.min.js"></script>
 	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/plugins/loaders/blockui.min.js"></script>
 	<!-- /core JS files -->
 
 	<!-- Theme JS files -->
+
 	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/plugins/visualization/d3/d3.min.js"></script>
 	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/plugins/visualization/d3/d3_tooltip.js"></script>
 	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/plugins/forms/styling/switchery.min.js"></script>
@@ -34,6 +38,7 @@
 
 	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/core/app.js"></script>
 	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/pages/dashboard.js"></script>
+
 	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/pages/layout_fixed_custom.js"></script>
 	<!-- /theme JS files -->
 
@@ -102,13 +107,26 @@
 				<!-- /page header -->
 				<!-- Content area -->
 				<div class="content">
-					<!-- Main charts -->
-					<div class="row">
-						<div class="col-lg-12">
- 	          				@yield('content')
+					<div class="panel panel-flat" >
+						<div class="panel-heading">
+							<h6 class="panel-title">User</h6>
+							<div class="heading-elements">
+								<ul class="icons-list">
+			                		<li><a data-action="collapse"></a></li>
+			                		<li><a data-action="reload"></a></li>
+			                		<li><a data-action="close"></a></li>
+			                	</ul>
+		                	</div>
 						</div>
+								<!-- /main charts -->
+						<div class="row">
+							<div class="col-lg-12">
+	 	          				@yield('content')
+							</div>
+						</div>
+								<!-- /main charts -->
+
 					</div>
-					<!-- /main charts -->
 					<!-- Footer -->
 					<div class="footer text-muted">
 						&copy; 2020. <a href="#">Pos System</a> by <a href="#" target="_blank">Arafat Rahman</a>

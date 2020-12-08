@@ -16,6 +16,7 @@
 	<!-- /global stylesheets -->
 
 	<!-- Core JS files -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/plugins/loaders/pace.min.js"></script>
 	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/core/libraries/jquery.min.js"></script>
 	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/core/libraries/bootstrap.min.js"></script>
@@ -35,6 +36,8 @@
 	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/core/app.js"></script>
 	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/pages/dashboard.js"></script>
 	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/pages/layout_fixed_custom.js"></script>
+	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/pages/user_pages_profile.js"></script>
+
 	<!-- /theme JS files -->
 
 </head>
@@ -78,44 +81,46 @@
 							<li><a href="index.html">Home</a></li>
 							<li class="active">Dashboard</li>
 						</ul>
-
-						<ul class="breadcrumb-elements">
-							<li><a href="#"><i class="icon-comment-discussion position-left"></i> Support</a></li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									<i class="icon-gear position-left"></i>
-									Settings
-									<span class="caret"></span>
-								</a>
-
-								<ul class="dropdown-menu dropdown-menu-right">
-									<li><a href="#"><i class="icon-user-lock"></i> Account security</a></li>
-									<li><a href="#"><i class="icon-statistics"></i> Analytics</a></li>
-									<li><a href="#"><i class="icon-accessibility"></i> Accessibility</a></li>
-									<li class="divider"></li>
-									<li><a href="#"><i class="icon-gear"></i> All settings</a></li>
-								</ul>
-							</li>
-						</ul>
 					</div>
 				</div>
 				<!-- /page header -->
 				<!-- Content area -->
-				<div class="content">
-					<!-- Main charts -->
-					<div class="row">
-						<div class="col-lg-12">
- 	          				@yield('content')
-						</div>
-					</div>
-					<!-- /main charts -->
-					<!-- Footer -->
-					<div class="footer text-muted">
-						&copy; 2020. <a href="#">Pos System</a> by <a href="#" target="_blank">Arafat Rahman</a>
-					</div>
-					<!-- /footer -->
+				
+					<div class="content">
+						<div class="panel panel-flat">
+							<div class="panel-heading">
+								<h4 class="panel-title">@yield('panel-title')</h4>
+								<div class="heading-elements">
+									<ul class="icons-list">
+				                		<li><a data-action="collapse"></a></li>
+				                		<li><a data-action="reload"></a></li>
+				                		<li><a data-action="close"></a></li>
+				                	</ul>
+			                	</div>
+							</div>
+								<!-- /main charts -->
+							<div class="row">
+								<div class="col-lg-12">
+									{{-- @php
+										$currentUrl = \URL::current();
+										$locale = App::getLocale();
+										$urlArray = explode('public', $currentUrl);
+										$fullUrl = URL::to('bn'.$urlArray[1]);
+										echo $fullUrl;
+									@endphp --}}
+		 	          				@yield('content')
+								</div>
+							</div>
+								<!-- /main charts -->
 
-				</div>
+						</div>
+						<!-- Footer -->
+						<div class="footer text-muted">
+							&copy; 2020. <a href="#">Pos System</a> by <a href="#" target="_blank">Arafat Rahman</a>
+						</div>
+						<!-- /footer -->
+
+					</div>
 				<!-- /content area -->
 
 			</div>

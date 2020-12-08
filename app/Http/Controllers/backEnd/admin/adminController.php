@@ -13,10 +13,17 @@ class adminController extends Controller
     {
     	return view('backEnd.admin.home');
     }
+
     public function login()
     {
-    	return view('backEnd.admin.login');
+        return view('backEnd.admin.login');
     }
+
+    public function redirectToLogin()
+    {
+    	return redirect()->route('admin.login');
+    }
+    
     public function postLogin(Request $request)
     {
     	 $data = array(

@@ -102,13 +102,26 @@
 				<!-- /page header -->
 				<!-- Content area -->
 				<div class="content">
-					<!-- Main charts -->
-					<div class="row">
-						<div class="col-lg-12">
- 	          				@yield('content')
+					<div class="panel panel-flat" style="width: 100%">
+						<div class="panel-heading">
+							<h6 class="panel-title">Provider</h6>
+							<div class="heading-elements">
+								<ul class="icons-list">
+			                		<li><a data-action="collapse"></a></li>
+			                		<li><a data-action="reload"></a></li>
+			                		<li><a data-action="close"></a></li>
+			                	</ul>
+		                	</div>
 						</div>
+								<!-- /main charts -->
+						<div class="row">
+							<div class="col-lg-12">
+	 	          				@yield('content')
+							</div>
+						</div>
+								<!-- /main charts -->
+
 					</div>
-					<!-- /main charts -->
 					<!-- Footer -->
 					<div class="footer text-muted">
 						&copy; 2020. <a href="#">Pos System</a> by <a href="#" target="_blank">Arafat Rahman</a>

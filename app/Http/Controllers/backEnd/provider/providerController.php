@@ -15,7 +15,11 @@ class providerController extends Controller
     }
     public function login()
     {
-    	return view('backEnd.provider.login');
+        return view('backEnd.provider.login');
+    }
+    public function redirectToLogin()
+    {
+    	return redirect()->route('provider.login');
     }
     public function postLogin(Request $request)
     {

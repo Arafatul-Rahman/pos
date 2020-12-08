@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//user
 Route::group(['namespace' => 'backEnd\user', 'as'=>'user.'], function (){
 		Route::get('login', 'userController@login')->name('login');
 		Route::post('login', 'userController@postLogin')->name('login');
@@ -19,11 +20,18 @@ Route::group(['namespace' => 'backEnd\user', 'as'=>'user.'], function (){
 
 			Route::group(['middleware' => 'UserAuth'], function (){
 				Route::get('/', 'userController@home')->name('home');
+
+			//make own profile
+			Route::get('/profile', 'profileController@getUser')->name('profile');
+			Route::post('/updateProfile', 'profileController@updateProfile')->name('updateProfile');
+			//admin user image
+			Route::get('/userImage', 'profileController@userImage')->name('userImage');
+			Route::post('/uplodeImage', 'profileController@uplodeImage')->name('uplodeImage');
 			});
 
 	});
 
-
+//admin
 Route::group(['namespace' => 'backEnd\admin','prefix' => 'admin', 'as'=>'admin.'], function (){
 
 	Route::get('login', 'adminController@login')->name('login');
@@ -32,12 +40,22 @@ Route::group(['namespace' => 'backEnd\admin','prefix' => 'admin', 'as'=>'admin.'
 	
 		Route::group(['middleware' => 'AdminAuth'], function (){
 
+			Route::get('/', 'adminController@redirectToLogin')->name('redirectToLogin');
 			Route::get('/home', 'adminController@home')->name('home');
-			Route::get('/users', 'userController@dashboard');
+			//add user
+			Route::resource('users', 'userController');
+
+			//make own profile
+			Route::get('/profile', 'profileController@getUser')->name('profile');
+			Route::post('/updateProfile', 'profileController@updateProfile')->name('updateProfile');
+			//admin user image
+			Route::get('/userImage', 'profileController@userImage')->name('userImage');
+			Route::post('/uplodeImage', 'profileController@uplodeImage')->name('uplodeImage');
+
 		});
 });
 
-
+//provider
 Route::group(['namespace' => 'backEnd\provider','prefix' => 'provider', 'as'=>'provider.'], function (){
 
 	Route::get('login', 'providerController@login')->name('login');
@@ -46,7 +64,15 @@ Route::group(['namespace' => 'backEnd\provider','prefix' => 'provider', 'as'=>'p
 
 		Route::group(['middleware' => 'ProviderAuth'], function (){
 
+			Route::get('/', 'providerController@redirectToLogin')->name('redirectToLogin');
 			Route::get('/home', 'providerController@home')->name('home');
+			
+			//make own profile
+			Route::get('/profile', 'profileController@getUser')->name('profile');
+			Route::post('/updateProfile', 'profileController@updateProfile')->name('updateProfile');
+			//admin user image
+			Route::get('/userImage', 'profileController@userImage')->name('userImage');
+			Route::post('/uplodeImage', 'profileController@uplodeImage')->name('uplodeImage');
 		});
 
 });
