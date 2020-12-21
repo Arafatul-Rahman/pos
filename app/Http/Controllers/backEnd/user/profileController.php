@@ -16,8 +16,8 @@ class profileController extends Controller
 
         $data = array(); 
         $data['user_id'] = $user_id = Auth::guard('user')->id();
-        $data['userInfo'] = UserUserInfo::find($user_id);
-        $data['username'] = User::find($user_id)->name;
+        $data['userInfo'] = UserUserInfo::valid()->find($user_id);
+        $data['UseruserInfo'] = User::valid()->find($user_id);
         return view('backEnd.user.userProfile.userProfile',$data); 
     }
     public function updateProfile(Request $request) 
@@ -27,11 +27,12 @@ class profileController extends Controller
         $authId = Auth::guard('user')->id();
         $result = User::find($authId)->update([
                 "name"              => $request->name,
+                "address"           => $request->address
+
         ]);
         $result = UserUserInfo::find($authId)->update([
                 "surname"           => $request->surname,
                 "designation"       => $request->designation,
-                "address"           => $request->address,
                 "mobile"            => $request->mobile,
                 "office_phone"      => $request->office_phone,
                 "fax"               => $request->fax,
@@ -48,7 +49,8 @@ class profileController extends Controller
         //     $output['message'] = 'Profile has not been Updated';
         //     return response()->json($output);
         // } 
-        return redirect('profile')->with('massege','insert succsessfully done');
+        toast('Your Profile Has Been Updated','success');
+        return redirect('profile');
 
     }
 
@@ -57,7 +59,7 @@ class profileController extends Controller
     {  
         $data = array(); 
         $data['user_id'] = $user_id = Auth::guard('user')->id();
-        $data['userInfo'] = UserUserInfo::find($user_id);
+        $data['userInfo'] = UserUserInfo::valid()->find($user_id);
         return view('backEnd.user.userProfile.imagePage',$data); 
     }
     public function uplodeImage(Request $request) 
@@ -76,7 +78,10 @@ class profileController extends Controller
          $result = UserUserInfo::find($authId)->update([
             "image" => $image_name,
         ]);
-
+        $result = User::find($authId)->update([
+            "image" => $image_name,
+        ]);
+        toast('Your Photo Has Been Updated','success');
         return response()->json(['status'=>true]);
 
     }

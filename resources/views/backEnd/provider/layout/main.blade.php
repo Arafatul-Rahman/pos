@@ -7,7 +7,8 @@
 	<title>pos</title>
 
 	<!-- Global stylesheets -->
-	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+	<!-- Global stylesheets -->
+
 	<link href="{{asset('/backEnd/admin')}}/assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
 	<link href="{{asset('/backEnd/admin')}}/assets/css/minified/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<link href="{{asset('/backEnd/admin')}}/assets/css/minified/core.min.css" rel="stylesheet" type="text/css">
@@ -16,6 +17,7 @@
 	<!-- /global stylesheets -->
 
 	<!-- Core JS files -->
+
 	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/plugins/loaders/pace.min.js"></script>
 	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/core/libraries/jquery.min.js"></script>
 	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/core/libraries/bootstrap.min.js"></script>
@@ -32,10 +34,20 @@
 	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/plugins/pickers/daterangepicker.js"></script>
 	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/plugins/ui/nicescroll.min.js"></script>
 
+
+	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/plugins/tables/datatables/datatables.min.js"></script>
+	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/plugins/tables/datatables/extensions/responsive.min.js"></script>
+	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/plugins/forms/selects/select2.min.js"></script>
+
 	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/core/app.js"></script>
-	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/pages/dashboard.js"></script>
-	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/pages/layout_fixed_custom.js"></script>
+	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/pages/datatables_responsive.js"></script>
 	<!-- /theme JS files -->
+	<!-- /theme JS files -->
+	<style type="text/css">
+		.swal2-title{
+			font-size: 14px!important;
+		}
+	</style>
 
 </head>
 
@@ -139,6 +151,6 @@
 
 	</div>
 	<!-- /page container -->
-
+	        @include('sweetalert::alert')
 </body>
 </html>

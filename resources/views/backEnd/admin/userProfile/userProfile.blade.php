@@ -20,7 +20,7 @@ User Profile
 									<div class="row">
 										<div class="col-md-6">
 											<label>Name</label>
-											<input type="text" name="name" value="{{$username}}" class="form-control">
+											<input type="text" name="name" value="{{$AdminUserInfo->name}}" class="form-control">
 										</div>
 										<div class="col-md-6">
 											<label>Sur name</label>
@@ -37,7 +37,7 @@ User Profile
 										</div>
 										<div class="col-md-6">
 											<label>Address</label>
-											<input type="text" name="address" value="{{$userInfo->address}}" class="form-control">
+											<input type="text" name="address" value="{{$AdminUserInfo->address}}" class="form-control">
 										</div>
 									</div>
 								</div>
@@ -119,7 +119,7 @@ User Profile
 			</div>
 		
 	    	<div class="caption text-center">
-	    		<h6 class="text-semibold no-margin">{{$username}} <small class="display-block">{{$userInfo->designation}}</small></h6>
+	    		<h6 class="text-semibold no-margin">{{$AdminUserInfo->name}} <small class="display-block">{{$userInfo->designation}}</small></h6>
     			<ul class="icons-list mt-15">
                 	<li><a href="#" data-popup="tooltip" title="Google Drive"><i class="icon-google-drive"></i></a></li>
                 	<li><a href="#" data-popup="tooltip" title="Twitter"><i class="icon-twitter"></i></a></li>
@@ -129,8 +129,9 @@ User Profile
     	</div>
     	<!-- /user thumbnail -->
 	</div>
+
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <script type="text/javascript">
 $(document).ready(function () {
 	$('#mobile,#fax,#office_phone').keypress(function (event) {

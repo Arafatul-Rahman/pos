@@ -18,7 +18,6 @@ class CreateProviderUserInfosTable extends Migration
             $table->foreignId('provider_user_id',200)->nullable();
             $table->string('surname')->nullable();
             $table->string('designation')->nullable();
-            $table->string('address')->nullable();
             $table->string('mobile')->nullable();
             $table->string('office_phone')->nullable();
             $table->string('fax')->nullable();

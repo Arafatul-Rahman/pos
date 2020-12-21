@@ -18,7 +18,7 @@ class Provider_user extends Authenticatable
     protected $table = 'provider_users';
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','address','image','valid'
     ];
 
     /**
@@ -38,4 +38,8 @@ class Provider_user extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+     public function scopeValid($query)
+    {
+        return $query->where('valid', 1);
+    }
 }

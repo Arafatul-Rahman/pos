@@ -123,8 +123,12 @@
 
 		<li class="dropdown dropdown-user">
 			<a class="dropdown-toggle" data-toggle="dropdown">
-				<img src="{{asset('/backEnd/admin')}}/assets/images/placeholder.jpg" alt="">
-				<span>Victoria</span>
+				@if(Auth::guard('user')->user()->image)         
+			      	<img src="{{asset('/backEnd/admin')}}/assets/uploads/user/{{ Auth::guard('user')->user()->image}}" class="img-circle img-sm" alt="">       
+				@else
+					<img src="{{asset('/backEnd/admin')}}/assets/images/user/demo.jpg" alt="">
+				@endif
+				<span>{{ Auth::guard('user')->user()->name}}</span>
 				<i class="caret"></i>
 			</a>
 

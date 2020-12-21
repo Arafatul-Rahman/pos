@@ -12,7 +12,7 @@ class UserUserInfo extends Model
     protected $dates = ['deleted_at'];
 
     protected $fillable = [
-        'name', 'surname','designation','address','mobile','office_phone','fax','dob','gender','about','image','valid'
+        'user_id','name', 'surname','designation','address','mobile','office_phone','fax','dob','gender','about','image','emailVerification','valid'
     ];
 
     public function scopeValid($query)

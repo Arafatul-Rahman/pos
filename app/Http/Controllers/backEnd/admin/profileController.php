@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\backEnd\admin; 
 
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Controllers\Controller; 
 use Illuminate\Http\Request; 
 use App\AdminUserInfo;
@@ -16,8 +17,8 @@ class profileController extends Controller
 
         $data = array(); 
         $data['admin_id'] = $admin_id = Auth::guard('admin')->id();
-        $data['userInfo'] = AdminUserInfo::find($admin_id);
-        $data['username'] = Admin::find($admin_id)->name;
+        $data['userInfo'] = AdminUserInfo::valid()->find($admin_id);
+        $data['AdminUserInfo'] = Admin::valid()->find($admin_id);
         return view('backEnd.admin.userProfile.userProfile',$data); 
     }
     public function updateProfile(Request $request) 
@@ -27,11 +28,12 @@ class profileController extends Controller
         $authId = Auth::guard('admin')->id();
         $result = Admin::find($authId)->update([
                 "name"              => $request->name,
+                "address"           => $request->address
+
         ]);
         $result = AdminUserInfo::find($authId)->update([
                 "surname"           => $request->surname,
                 "designation"       => $request->designation,
-                "address"           => $request->address,
                 "mobile"            => $request->mobile,
                 "office_phone"      => $request->office_phone,
                 "fax"               => $request->fax,
@@ -39,6 +41,7 @@ class profileController extends Controller
                 "gender"            => $request->gender,
                 "about"             => $request->about
         ]);
+
         // if ($result == true) {
         //     $output['status']  = 1;
         //     $output['message'] = 'Profile has been Updated';
@@ -48,7 +51,8 @@ class profileController extends Controller
         //     $output['message'] = 'Profile has not been Updated';
         //     return response()->json($output);
         // } 
-        return redirect('admin/profile')->with('massege','insert succsessfully done');
+        toast('Your Profile Has Been Updated','success');
+        return redirect('admin/profile');
 
     }
 
@@ -57,13 +61,13 @@ class profileController extends Controller
     {  
         $data = array(); 
         $data['admin_id'] = $admin_id = Auth::guard('admin')->id();
-        $data['userInfo'] = AdminUserInfo::find($admin_id);
+        $data['userInfo'] = AdminUserInfo::valid()->find($admin_id);
         return view('backEnd.admin.userProfile.imagePage',$data); 
     }
     public function uplodeImage(Request $request) 
     {  
         $data = $request->image;
-        $authId = Auth::guard('user')->id();
+        $authId = Auth::guard('admin')->id();
         list($type, $data) = explode(';', $data);
         list(, $data)      = explode(',', $data);
 
@@ -76,7 +80,10 @@ class profileController extends Controller
          $result = AdminUserInfo::find($authId)->update([
             "image" => $image_name,
         ]);
-
+        Admin::find($authId)->update([
+            "image" => $image_name,
+        ]);
+        toast('Your Photo Has Been Updated','success');
         return response()->json(['status'=>true]);
 
     }

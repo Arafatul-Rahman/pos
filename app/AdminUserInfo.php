@@ -12,7 +12,7 @@ class AdminUserInfo extends Model
     protected $dates = ['deleted_at'];
 
     protected $fillable = [
-        'name', 'surname','designation','address','mobile','office_phone','fax','dob','gender','about','image','valid'
+        'name', 'surname','designation','mobile','office_phone','fax','dob','gender','about','image','valid'
     ];
 
     public function scopeValid($query)

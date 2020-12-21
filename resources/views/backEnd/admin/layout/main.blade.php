@@ -4,10 +4,12 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<title>pos</title>
 
 	<!-- Global stylesheets -->
-	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+			<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 	<link href="{{asset('/backEnd/admin')}}/assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
 	<link href="{{asset('/backEnd/admin')}}/assets/css/minified/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<link href="{{asset('/backEnd/admin')}}/assets/css/minified/core.min.css" rel="stylesheet" type="text/css">
@@ -16,7 +18,7 @@
 	<!-- /global stylesheets -->
 
 	<!-- Core JS files -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/plugins/loaders/pace.min.js"></script>
 	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/core/libraries/jquery.min.js"></script>
 	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/core/libraries/bootstrap.min.js"></script>
@@ -33,12 +35,41 @@
 	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/plugins/pickers/daterangepicker.js"></script>
 	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/plugins/ui/nicescroll.min.js"></script>
 
-	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/core/app.js"></script>
-	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/pages/dashboard.js"></script>
-	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/pages/layout_fixed_custom.js"></script>
-	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/pages/user_pages_profile.js"></script>
 
+	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/plugins/tables/datatables/datatables.min.js"></script>
+	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/plugins/tables/datatables/extensions/responsive.min.js"></script>
+	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/plugins/forms/selects/select2.min.js"></script>
+
+	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/core/app.js"></script>
+	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/pages/datatables_responsive.js"></script>
+	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/custom.js"></script>
 	<!-- /theme JS files -->
+	<style type="text/css">
+		.swal2-title{
+			font-size: 14px!important;
+		}
+		.panel>.dataTables_wrapper .table-bordered {
+	    border: 1px solid #ddd;
+	    }
+	    .dataTables_length {
+	    margin: 20px 0 20px 20px;
+	    }
+	    .dataTables_filter {
+	    margin: 20px 0 20px 20px;
+	    }
+	    .dataTables_info {
+	    margin-bottom: 20px;
+	    }
+	    .dataTables_paginate {
+	    margin: 20px 0 20px 20px;
+	    }
+	    .action-icon {
+	    padding: 0px 10px 0 0;
+	    }
+	    input[type=search]{
+	    	margin-left: 10px!important;
+	    }
+	</style>
 
 </head>
 
@@ -110,6 +141,8 @@
 									@endphp --}}
 		 	          				@yield('content')
 								</div>
+								@include('sweetalert::alert')
+
 							</div>
 								<!-- /main charts -->
 
@@ -131,6 +164,11 @@
 
 	</div>
 	<!-- /page container -->
+	<div style="font-size: 100px!important;">
+		
+        @include('sweetalert::alert')
+
+	</div>
 
 </body>
 </html>

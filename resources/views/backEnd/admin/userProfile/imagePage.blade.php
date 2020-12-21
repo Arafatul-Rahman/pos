@@ -1,4 +1,4 @@
-@extends('backEnd.user.layout.main')
+@extends('backEnd.admin.layout.main')
 
 @section('panel-title')
 User Profile Update

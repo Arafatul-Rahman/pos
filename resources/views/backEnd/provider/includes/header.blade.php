@@ -103,7 +103,13 @@
 					</li>
 
 					<li class="media">
-						<div class="media-left"><img src="{{asset('/backEnd/admin')}}/assets/images/placeholder.jpg" class="img-circle img-sm" alt=""></div>
+						<div class="media-left">
+						@if(Auth::guard('provider')->user()->image)         
+			      			<img src="{{asset('/backEnd/admin')}}/assets/uploads/user/{{ Auth::guard('admin')->user()->image}}" class="img-circle img-sm" alt="">       
+						@else
+							<img src="{{asset('/backEnd/admin')}}/assets/images/user/demo.jpg" alt="">
+						@endif
+						</div>
 						<div class="media-body">
 							<a href="#" class="media-heading">
 								<span class="text-semibold">Richard Vango</span>
@@ -123,9 +129,13 @@
 
 		<li class="dropdown dropdown-user">
 			<a class="dropdown-toggle" data-toggle="dropdown">
-				<img src="{{asset('/backEnd/admin')}}/assets/images/placeholder.jpg" alt="">
-				<span>Victoria</span>
-				<i class="caret"></i>
+				@if(Auth::guard('provider')->user()->image)         
+      				<img src="{{asset('/backEnd/admin')}}/assets/uploads/user/{{ Auth::guard('provider')->user()->image}}" class="img-circle img-sm" alt="" height="30px" width="30px">       
+				@else
+					<img src="{{asset('/backEnd/admin')}}/assets/images/user/demo.jpg" alt="">
+				@endif
+					<span>{{ Auth::guard('provider')->user()->name}}</span>
+					<i class="caret"></i>
 			</a>
 
 			<ul class="dropdown-menu dropdown-menu-right">

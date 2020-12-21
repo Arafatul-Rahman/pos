@@ -71,7 +71,7 @@
 								</div>
 							</div>
 							<div class="form-group has-feedback has-feedback-left">
-								<input type="text" name="password" class="form-control" placeholder="Password" required>
+								<input type="password" name="password" class="form-control" placeholder="Password" required>
 								<div class="col-lg-12 text-denger">{!!session('errors')!!}</div>
 								<div class="form-control-feedback">
 									<i class="icon-lock2 text-muted"></i>

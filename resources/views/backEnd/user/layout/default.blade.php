@@ -36,10 +36,16 @@
 	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/pages/dashboard.js"></script>
 	<script type="text/javascript" src="{{asset('/backEnd/admin')}}/assets/js/pages/layout_fixed_custom.js"></script>
 	<!-- /theme JS files -->
-
+	<style type="text/css">
+		.swal2-title{
+			font-size: 14px!important;
+		}
+	</style>
 </head>
 
 <body>
 	@yield('content')
+	@include('sweetalert::alert')
+
 </body>
 </html>

@@ -13,11 +13,10 @@ class profileController extends Controller
 {
     public function getUser() 
     { 
-
         $data = array(); 
         $data['provider_id'] = $provider_id = Auth::guard('provider')->id();
-        $data['userInfo'] = ProviderUserInfo::find($provider_id);
-        $data['username'] = Provider_user::find($provider_id)->name;
+        $data['userInfo'] = ProviderUserInfo::valid()->find($provider_id);
+        $data['ProvideruserInfo'] = Provider_user::valid()->find($provider_id);
         return view('backEnd.provider.userProfile.userProfile',$data); 
     }
     public function updateProfile(Request $request) 
@@ -27,11 +26,11 @@ class profileController extends Controller
         $authId = Auth::guard('provider')->id();
         $result = Provider_user::find($authId)->update([
                 "name"              => $request->name,
+                "address"           => $request->address
         ]);
         $result = ProviderUserInfo::find($authId)->update([
                 "surname"           => $request->surname,
                 "designation"       => $request->designation,
-                "address"           => $request->address,
                 "mobile"            => $request->mobile,
                 "office_phone"      => $request->office_phone,
                 "fax"               => $request->fax,
@@ -48,7 +47,8 @@ class profileController extends Controller
         //     $output['message'] = 'Profile has not been Updated';
         //     return response()->json($output);
         // } 
-        return redirect('provider/profile')->with('massege','insert succsessfully done');
+        toast('Your Profile Has Been Updated','success');
+        return redirect('provider/profile');
 
     }
 
@@ -57,13 +57,13 @@ class profileController extends Controller
     {  
         $data = array(); 
         $data['provider_id'] = $provider_id = Auth::guard('provider')->id();
-        $data['userInfo'] = ProviderUserInfo::find($provider_id);
+        $data['userInfo'] = ProviderUserInfo::valid()->find($provider_id);
         return view('backEnd.provider.userProfile.imagePage',$data); 
     }
     public function uplodeImage(Request $request) 
     {  
         $data = $request->image;
-        $authId = Auth::guard('user')->id();
+        $authId = Auth::guard('provider')->id();
         list($type, $data) = explode(';', $data);
         list(, $data)      = explode(',', $data);
 
@@ -76,7 +76,11 @@ class profileController extends Controller
          $result = ProviderUserInfo::find($authId)->update([
             "image" => $image_name,
         ]);
-
+        $result = Provider_user::find($authId)->update([
+            "image" => $image_name,
+        ]);
+         
+        toast('Your Photo Has Been Updated','success');
         return response()->json(['status'=>true]);
 
     }
